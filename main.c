@@ -89,8 +89,6 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  //HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-  //HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
   /* USER CODE END 2 */
@@ -99,25 +97,21 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  //__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 3500);
-	  //__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 3500);
 
+	  //Düz
+	  //1. Motor
+	  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);  // Güç girişinden itibaren 1
+	  	  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);  // 3
 
-	  //DÜZ
-	  //1,
-	  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET); // Güç girişinden itibaren 1
-	  	  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET); // 3
+	  //2. Motor
+	  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);  // 2
+	  	  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET);  // 4
 
-	  	  //2,
-	  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET); // 2
-	  	  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET); // 4
-
-
-	  	  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 3500);
-	  	  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 3500);
-	  	  	HAL_Delay(2000);
+	  	  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 3500);
+	  	  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 3500);
+	  	  HAL_Delay(2000);
 	  //Dur
-	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+	      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
 	  	  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET);
 	  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
 	  	  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
@@ -125,60 +119,60 @@ int main(void)
 	  	  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 0);
 	  	  HAL_Delay(1000);
 	  //Geri
-	  	//1,
-	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET); // Güç girişinden itibaren 1
-	  		  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_SET); // 3
+	  	//1. Motor
+	  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET); // Güç girişinden itibaren 1
+	  	  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_SET); // 3
 
-	  		  //2,
-	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET); // 2
-	  		  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET); // 4
+	    //2. Motor
+	  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET); // 2
+	  	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET); // 4
 
+	  	 __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 3500);
+	  	 __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 3500);
+	  	 HAL_Delay(2000);
 
-	  		  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 3500);
-	  		  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 3500);
-	  		  	HAL_Delay(2000);
-	  	  //SAAT YÖNÜNDE DÖMÜ�?
-	  //1,
-	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET); // Güç girişinden itibaren 1
-	  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET); // 3
+	  	//Dönüş
+	      //1. Motor
+	     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET); // Güç girişinden itibaren 1
+	     HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET); // 3
 
-	  //2,
-	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET); // 2
-	  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET); // 4
-
+	     //2. Motor
+	     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET); // 2
+	  	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET); // 4
 
 	  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 3500);
 	  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 3500);
 	  	HAL_Delay(2000);
+
 	  	//Dur
-	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-	  		  	  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET);
-	  		  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
-	  		  	  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
-	  		  	  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
-	  		  	  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 0);
-	  		  	  HAL_Delay(1000);
-	  		  	//SAAT YÖNÜNDE DÖMÜ�?
-	  		  		  //1,
-	  		  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET); // Güç girişinden itibaren 1
-	  		  		  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_SET); // 3
+	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+	  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET);
+	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+	  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
+	  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
+	  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 0);
+	  	HAL_Delay(1000);
+	  	//Ters yöne dönüş
+	  		//1. Motor
+	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET); // Güç girişinden itibaren 1
+	  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_SET); // 3
 
-	  		  		  //2,
-	  		  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET); // 2
-	  		  		  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET); // 4
+	  		//2. Motor
+	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET); // 2
+	  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET); // 4
 
+	  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 3500);
+	  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 3500);
+	  	HAL_Delay(2000);
 
-	  		  		  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 3500);
-	  		  		  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 3500);
-	  		  		  	HAL_Delay(2000);
-	  		  		//Dur
-	  		  			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-	  		  			  	  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET);
-	  		  			  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
-	  		  			  	  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
-	  		  			  	  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
-	  		  			  	  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 0);
-	  		  			  	  HAL_Delay(1000);
+	  //Dur
+	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+	  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET);
+	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+	  	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
+	  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
+	  	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 0);
+	  	HAL_Delay(1000);
 
 
   }
